@@ -790,7 +790,7 @@ struct _RTMP_CHIP_OP_ {
 	VOID (*CckMrcStatusCtrl)(struct _RTMP_ADAPTER *pAd);
 	VOID (*RadarGLRTCompensate)(struct _RTMP_ADAPTER *pAd);
 	
-	VOID (*Calibration)(struct _RTMP_ADAPTER *pAd, UINT32 CalibrationID, UINT32 Parameter);
+	INT (*Calibration)(struct _RTMP_ADAPTER *pAd, UINT32 CalibrationID, UINT32 Parameter);
 
 	INT (*BurstWrite)(struct _RTMP_ADAPTER *pAd, UINT32 Offset, UINT32 *Data, UINT32 Cnt);
 
@@ -804,11 +804,11 @@ struct _RTMP_CHIP_OP_ {
 
 	INT (*RFReadModifyWrite)(struct _RTMP_ADAPTER *pAd, RF_R_M_W_REG *RegPair, UINT32 Num);
 
-	INT (*RandomWrite)(struct _RTMP_ADAPTER *pAd, RTMP_REG_PAIR *RegPair, UINT32 Num);
+	INT (*RandomWrite)(struct _RTMP_ADAPTER *pAd, UINT32 Num, ...);
 
-	INT (*RFRandomWrite)(struct _RTMP_ADAPTER *pAd, BANK_RF_REG_PAIR *RegPair, UINT32 Num);
+	INT (*RFRandomWrite)(struct _RTMP_ADAPTER *pAd, UINT32 Num, ...);
 
-	VOID (*DisableTxRx)(struct _RTMP_ADAPTER *pAd, UCHAR Level);
+	NTSTATUS (*DisableTxRx)(struct _RTMP_ADAPTER *pAd, UCHAR Level);
 
 	VOID (*AsicRadioOn)(struct _RTMP_ADAPTER *pAd, UCHAR Stage);
 

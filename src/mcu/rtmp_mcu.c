@@ -30,10 +30,10 @@
 
 INT MCUBurstWrite(PRTMP_ADAPTER pAd, UINT32 Offset, UINT32 *Data, UINT32 Cnt)
 {
-	RTUSBMultiWrite_nBytes(pAd, Offset, Data, Cnt * 4, 64); 
+	RTUSBMultiWrite_nBytes(pAd, Offset, (PUCHAR)Data, Cnt * 4, 64); 
 }
 
-INT MCURandomWrite(PRTMP_ADAPTER pAd, RTMP_REG_PAIR *RegPair, UINT32 Num)
+INT MCURandomWrite(PRTMP_ADAPTER pAd, UINT32 Num, RTMP_REG_PAIR *RegPair)
 {
 	UINT32 Index;
 	
@@ -51,7 +51,7 @@ VOID ChipOpsMCUHook(PRTMP_ADAPTER pAd, enum MCU_TYPE MCUType)
 	{
 		pChipOps->sendCommandToMcu = RtmpAsicSendCommandToMcu;
 		pChipOps->BurstWrite = MCUBurstWrite;
-		pChipOps->RandomWrite = MCURandomWrite;
+		//pChipOps->RandomWrite = MCURandomWrite;
 	}
 
 #ifdef CONFIG_ANDES_SUPPORT
