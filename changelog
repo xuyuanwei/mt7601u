@@ -1,2 +1,5 @@
 20161024
 1. fix some compile error,but driver is not workable
+
+20161102
+1. fix the read /etc/Wireless/RT2870AP/RT2870AP.dat fail problem
